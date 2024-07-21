@@ -1,9 +1,32 @@
-import "@/styles/globals.css";
+import "@/styles/global.css";
 
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter";
+
+import { View } from "react-native";
 import { Slot } from "expo-router";
+import Loading from "@/components/loading";
 
 const Layout = () => {
-  return <Slot />;
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <Loading />;
+  }
+
+  return (
+    <View className="flex-1">
+      <Slot />
+    </View>
+  );
 };
 
 export default Layout;
