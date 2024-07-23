@@ -5,6 +5,7 @@ import {
   Inter_400Regular,
   Inter_500Medium,
   Inter_700Bold,
+  Inter_600SemiBold,
 } from "@expo-google-fonts/inter";
 
 import { View } from "react-native";
@@ -16,6 +17,7 @@ const Layout = () => {
     Inter_400Regular,
     Inter_500Medium,
     Inter_700Bold,
+    Inter_600SemiBold
   });
 
   if (!fontsLoaded) {
