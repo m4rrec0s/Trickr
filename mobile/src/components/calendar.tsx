@@ -31,11 +31,11 @@ const Calendar = () => {
   };
 
   return (
-    <View style={{paddingBottom: 40}}>
+    <View>
       <View className="flex items-center gap-3">
         <View className="max-w-md mx-auto">
           <Text className="text-center text-lg font-semibold mb-4">Hoje</Text>
-          <View className="flex-row gap-3 pb-5">{renderDays()}</View>
+          <View className="flex-row gap-3 pb-2">{renderDays()}</View>
         </View>
       </View>
     </View>
