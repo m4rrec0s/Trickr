@@ -1,7 +1,7 @@
 import Calendar from "@/components/calendar";
 import Menu from "@/components/menu";
 import TaskItem from "@/components/task-item";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 
 const Home = () => {
   const tasks = [
@@ -68,12 +68,13 @@ const Home = () => {
       <View className="flex items-center bg-purple-200 pt-16 p-5">
         <Calendar />
       </View>
-      <View className="flex w-full flex-col gap-3 px-5 py-8 absolute top-52 rounded-2xl bg-gray-50 overflow-y-scroll">
-        {tasks.map((task, index) => (
-          <TaskItem key={index} props={task} />
-        ))}
+      <View className="flex-1">
+        <ScrollView className="flex flex-col w-full gap-3 px-5 py-8 bg-gray-50 rounded-2xl">
+          {tasks.map((task, index) => (
+            <TaskItem key={index} props={task} />
+          ))}
+        </ScrollView>
       </View>
-      <Menu />
     </View>
   );
 };
