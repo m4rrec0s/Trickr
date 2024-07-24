@@ -25,7 +25,7 @@ const Layout = () => {
   }
 
   return (
-    <View className="flex-1 bg-slate-100">
+    <View className="flex-1 bg-slate-200">
       <Slot />
     </View>
   );
