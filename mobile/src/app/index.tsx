@@ -1,3 +1,4 @@
+import AddTaskButton from "@/components/add-task-button";
 import Calendar from "@/components/calendar";
 import Menu from "@/components/menu";
 import TaskItem from "@/components/task-item";
@@ -75,6 +76,7 @@ const Home = () => {
           ))}
         </ScrollView>
       </View>
+        <AddTaskButton />
     </View>
   );
 };
