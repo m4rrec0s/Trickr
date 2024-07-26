@@ -25,7 +25,7 @@ const Layout = () => {
   }
 
   return (
-    <View className="flex-1 bg-slate-200">
+    <View className="flex-1 bg-gray-50">
       <Slot />
       <View className="absolute -bottom-2 w-full shadow-2xl border-t border-gray-200">
         <Menu />

@@ -65,7 +65,7 @@ const Home = () => {
   ];
 
   return (
-    <View className="flex-1">
+    <View className="flex-1 animate-fadeIn">
       <View className="flex items-center bg-purple-200 pt-16 p-5">
         <Calendar />
       </View>
