@@ -1,6 +1,5 @@
 import AddTaskButton from "@/components/add-task-button";
 import Calendar from "@/components/calendar";
-import Menu from "@/components/menu";
 import TaskItem from "@/components/task-item";
 import { ScrollView, View } from "react-native";
 
@@ -69,14 +68,12 @@ const Home = () => {
       <View className="flex items-center bg-purple-200 pt-16 p-5">
         <Calendar />
       </View>
-      <View className="flex-1">
-        <ScrollView className="flex flex-col w-full gap-3 px-5 py-8 bg-gray-50 rounded-2xl">
-          {tasks.map((task, index) => (
-            <TaskItem key={index} props={task} />
-          ))}
-        </ScrollView>
-      </View>
-        <AddTaskButton />
+      <ScrollView className="flex flex-col w-full gap-3 px-5 py-8 bg-gray-50 rounded-2xl">
+        {tasks.map((task, index) => (
+          <TaskItem key={index} props={task} />
+        ))}
+      </ScrollView>
+      <AddTaskButton />
     </View>
   );
 };

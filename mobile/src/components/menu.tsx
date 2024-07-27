@@ -9,7 +9,7 @@ import { Link } from "expo-router";
 
 const Menu = () => {
   return (
-    <View className="w-full flex flex-row justify-between bg-white px-10 pt-4 pb-6 rounded-l-2xl rounded-r-2xl z-50">
+    <View className="w-full flex flex-row justify-between bg-white px-10 pt-4 pb-6 rounded-l-2xl rounded-r-2xl z-50 shadow-2xl border-t border-gray-200">
       <Link className="p-4" href="/">
         <View className="flex flex-col items-center justify-center">
           <CircleCheckBigIcon size={30} color={"black"} />
