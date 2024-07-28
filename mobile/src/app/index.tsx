@@ -1,9 +1,19 @@
 import AddTaskButton from "@/components/add-task-button";
 import Calendar from "@/components/calendar";
+import { Modal } from "@/components/modal";
 import TaskItem from "@/components/task-item";
-import { ScrollView, View } from "react-native";
+import { PlusIcon } from "lucide-react-native";
+import { useState } from "react";
+import { ScrollView, TouchableOpacity, View } from "react-native";
+
+enum MODAL {
+  NONE = 0,
+  TASK = 1,
+}
 
 const Home = () => {
+  const [modalVisible, setModalVisible] = useState(MODAL.NONE);
+
   const tasks = [
     {
       title: "Comprar pão",
@@ -73,7 +83,17 @@ const Home = () => {
           <TaskItem key={index} props={task} />
         ))}
       </ScrollView>
-      <AddTaskButton />
+      <TouchableOpacity onPress={() => setModalVisible(MODAL.TASK)} className="w-[60px] h-[60px] bg-purple-600 rounded-full flex items-center justify-center absolute bottom-5 right-4 z-50 shadow-lg">
+        <PlusIcon size={30} color="white" />
+      </TouchableOpacity>
+
+      <Modal
+        title={"Cadastrar atividade"}
+        subtitle="Todos os convidados podem vizualizar as atividades"
+        onClose={() => setModalVisible(MODAL.NONE)}
+        visible={modalVisible === MODAL.TASK}
+      ></Modal>
+
     </View>
   );
 };
