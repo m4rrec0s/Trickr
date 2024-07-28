@@ -1,10 +1,10 @@
-import AddTaskButton from "@/components/add-task-button";
 import Calendar from "@/components/calendar";
+import { Input } from "@/components/input";
 import { Modal } from "@/components/modal";
 import TaskItem from "@/components/task-item";
 import { PlusIcon } from "lucide-react-native";
 import { useState } from "react";
-import { ScrollView, TouchableOpacity, View } from "react-native";
+import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 
 enum MODAL {
   NONE = 0,
@@ -83,7 +83,10 @@ const Home = () => {
           <TaskItem key={index} props={task} />
         ))}
       </ScrollView>
-      <TouchableOpacity onPress={() => setModalVisible(MODAL.TASK)} className="w-[60px] h-[60px] bg-purple-600 rounded-full flex items-center justify-center absolute bottom-5 right-4 z-50 shadow-lg">
+      <TouchableOpacity
+        onPress={() => setModalVisible(MODAL.TASK)}
+        className="w-[60px] h-[60px] bg-purple-600 rounded-full flex items-center justify-center absolute bottom-5 right-4 z-50 shadow-lg"
+      >
         <PlusIcon size={30} color="white" />
       </TouchableOpacity>
 
@@ -92,8 +95,31 @@ const Home = () => {
         subtitle="Todos os convidados podem vizualizar as atividades"
         onClose={() => setModalVisible(MODAL.NONE)}
         visible={modalVisible === MODAL.TASK}
-      ></Modal>
+      >
+        <View className="flex justify-between h-[84vh]">
+          <View className="border-t border-gray-300 mt-4 pb-2">
+            <Input variant="secondary" className="mt-2">
+              <Input.Field placeholder="Título da atividade" />
+            </Input>
+            <Input variant="secondary" className="mt-2">
+              <Input.Field placeholder="Dia" />
+            </Input>
+            <Input variant="secondary" className="mt-2">
+              <Input.Field placeholder="Horário" />
+            </Input>
+            <Input variant="secondary" className="mt-2">
+              <Input.Field placeholder="Tag" />
+            </Input>
+          </View>
 
+          <TouchableOpacity
+            onPress={() => setModalVisible(MODAL.NONE)}
+            className="w-full bg-purple-600 rounded-lg py-3 mt-4"
+          >
+            <Text className="text-center text-white font-semibold">Salvar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
