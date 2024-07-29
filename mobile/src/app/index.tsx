@@ -11,7 +11,6 @@ enum MODAL {
   TASK = 1,
 }
 
-// Definindo a interface para uma tarefa
 interface Task {
   title: string;
   description: string;
@@ -19,7 +18,6 @@ interface Task {
   isCompleted: boolean;
 }
 
-// Definindo o tipo para o objeto tasks
 type Tasks = {
   [key: number]: Task[];
 };
