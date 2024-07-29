@@ -4,7 +4,6 @@ interface TaskItemProps {
   props: {
     title: string;
     description: string;
-    dateTask: Date;
     time: string;
     isCompleted: boolean;
   };

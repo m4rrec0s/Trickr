@@ -11,75 +11,144 @@ enum MODAL {
   TASK = 1,
 }
 
-const Home = () => {
-  const [modalVisible, setModalVisible] = useState(MODAL.NONE);
+// Definindo a interface para uma tarefa
+interface Task {
+  title: string;
+  description: string;
+  time: string;
+  isCompleted: boolean;
+}
 
-  const tasks = [
-    {
-      title: "Comprar pão",
-      description: "Pão francês",
-      dateTask: new Date(),
-      time: "08:00",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar leite",
-      description: "Leite desnatado",
-      dateTask: new Date(),
-      time: "09:00",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar café",
-      description: "Café torrado",
-      dateTask: new Date(),
-      time: "09:30",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar açúcar",
-      description: "Açúcar cristal",
-      dateTask: new Date(),
-      time: "12:00",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar manteiga",
-      description: "Manteiga com sal",
-      dateTask: new Date(),
-      time: "13:00",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar ovos",
-      description: "Ovos brancos",
-      dateTask: new Date(),
-      time: "13:30",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar ovos",
-      description: "Ovos brancos",
-      dateTask: new Date(),
-      time: "13:30",
-      isCompleted: false,
-    },
-    {
-      title: "Comprar ovos",
-      description: "Ovos brancos",
-      dateTask: new Date(),
-      time: "13:30",
-      isCompleted: false,
-    },
-  ];
+// Definindo o tipo para o objeto tasks
+type Tasks = {
+  [key: number]: Task[];
+};
+
+const Home: React.FC = () => {
+  const [modalVisible, setModalVisible] = useState(MODAL.NONE);
+  const [selectedDay, setSelectedDay] = useState(new Date().getDay());
+
+  const tasks: Tasks = {
+    0: [
+      {
+        title: "Comprar pão",
+        description: "Pão francês",
+        time: "08:00",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar leite",
+        description: "Leite desnatado",
+        time: "09:00",
+        isCompleted: false,
+      },
+
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+    ],
+    1: [
+      {
+        title: "Comprar café",
+        description: "Café torrado",
+        time: "09:30",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar café",
+        description: "Café torrado",
+        time: "09:30",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar açúcar",
+        description: "Açúcar cristal",
+        time: "12:00",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar manteiga",
+        description: "Manteiga com sal",
+        time: "13:00",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+    ],
+    2: [
+      {
+        title: "Comprar açúcar",
+        description: "Açúcar cristal",
+        time: "12:00",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar açúcar",
+        description: "Açúcar cristal",
+        time: "12:00",
+        isCompleted: false,
+      },
+      {
+        title: "Comprar açúcar",
+        description: "Açúcar cristal",
+        time: "12:00",
+        isCompleted: false,
+      },
+    ],
+    3: [
+      {
+        title: "Comprar manteiga",
+        description: "Manteiga com sal",
+        time: "13:00",
+        isCompleted: false,
+      },
+    ],
+    4: [
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+    ],
+    5: [
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+    ],
+    6: [
+      {
+        title: "Comprar ovos",
+        description: "Ovos brancos",
+        time: "13:30",
+        isCompleted: false,
+      },
+    ],
+  };
 
   return (
     <View className="flex-1 animate-fadeIn">
       <View className="flex items-center bg-purple-200 pt-16 p-5">
-        <Calendar />
+        <Calendar selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
       </View>
       <ScrollView className="flex flex-col w-full gap-3 px-5 py-8 bg-gray-50 rounded-2xl">
-        {tasks.map((task, index) => (
+        {tasks[selectedDay]?.map((task, index) => (
           <TaskItem key={index} props={task} />
         ))}
       </ScrollView>
@@ -97,17 +166,17 @@ const Home = () => {
         visible={modalVisible === MODAL.TASK}
       >
         <View className="flex justify-between h-[84vh]">
-          <View className="border-t border-gray-300 mt-4 pb-2">
-            <Input variant="secondary" className="mt-2">
+          <View className="border-t border-gray-300 mt-4 pt-3 pb-2 gap-4">
+            <Input variant="secondary" className="">
               <Input.Field placeholder="Título da atividade" />
             </Input>
-            <Input variant="secondary" className="mt-2">
+            <Input variant="secondary" className="">
               <Input.Field placeholder="Dia" />
             </Input>
-            <Input variant="secondary" className="mt-2">
+            <Input variant="secondary" className="">
               <Input.Field placeholder="Horário" />
             </Input>
-            <Input variant="secondary" className="mt-2">
+            <Input variant="secondary" className="">
               <Input.Field placeholder="Tag" />
             </Input>
           </View>
